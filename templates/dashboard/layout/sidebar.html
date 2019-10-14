@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+</head>
+<body>
+<div class="sidebar" data-color="white" data-active-color="danger">
+      <div class="logo">
+        <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+          <div class="logo-image-small">
+            <img src="../../../static/img/logo-small.png">
+          </div>
+        </a>
+        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+          Creative Tim
+        </a>
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li id="dashboard" >
+            <a class="testClick" href="./">
+              <i class="nc-icon nc-bank"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <li id="icons" >
+            <a class="testClick" href="./icons">
+              <i class="nc-icon nc-diamond"></i>
+              <p>Icons</p>
+            </a>
+          </li>
+          <li id="maps">
+            <a class="testClick" href="./map">
+              <i class="nc-icon nc-pin-3"></i>
+              <p>Maps</p>
+            </a>
+          </li>
+          <li id="notifications">
+            <a class="testClick" href="./notifications">
+              <i class="nc-icon nc-bell-55"></i>
+              <p>Notifications</p>
+            </a>
+          </li>
+          <li id="user">
+            <a class="testClick" href="./user">
+              <i class="nc-icon nc-single-02"></i>
+              <p>User Profile</p>
+            </a>
+          </li>
+          <li id="table">
+            <a class="testClick" href="./tables">
+              <i class="nc-icon nc-tile-56"></i>
+              <p>Table List</p>
+            </a>
+          </li>
+          <li id="typography">
+            <a class="testClick" href="./typography">
+              <i class="nc-icon nc-caps-small"></i>
+              <p>Typography</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+</div>
+<script>
+    {#$(".testClick").click(function () {#}
+    {#    for (const li of document.querySelectorAll('.sidebar-wrapper>ul>li')) {#}
+    {#        li.removeClass('active');#}
+    {#        $(li.id).removeClass('active');#}
+    {#    }#}
+    {#    $(this).parent().addClass('active');#}
+    {#});#}
+</script>
+</body>
+</html>

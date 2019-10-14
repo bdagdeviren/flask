@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../static/js/d3.v3.min.js" ></script>
+    <script src="../static/js/liquidFillGauge.js" ></script>
+     <link rel="stylesheet" href="../static/css/gauge.css">
+    <style>
+        .liquidFillGaugeText { font-family: Helvetica; font-weight: bold; }
+    </style>
+</head>
+<body>
+<fieldset class="center-div">
+    <legend style="font-size: 20px;">Usage Info:</legend>
+    <div class="container">
+        <div class="iheader">Cpu</div>
+        <svg id="fillgauge1"></svg>
+    </div>
+    <div class="container">
+        <div class="iheader">App Memory</div>
+        <svg id="fillgauge2"></svg>
+    </div>
+    <div class="container">
+        <div class="iheader">Total Memory</div>
+        <svg id="fillgauge3"></svg>
+    </div>
+    <div class="container">
+        <div class="iheader">Disk</div>
+        <svg id="fillgauge4"></svg>
+    </div>
+</fieldset>
+
+<script language="JavaScript">
+    var gauge1 = loadLiquidFillGauge("fillgauge1", 55);
+    var gauge2 = loadLiquidFillGauge("fillgauge2", 55);
+    var gauge3 = loadLiquidFillGauge("fillgauge3", 55);
+    var gauge4 = loadLiquidFillGauge("fillgauge4", 55);
+    const source = new EventSource("/chart-data");
+
+    source.onmessage = function (event) {
+        {#const data = JSON.parse(event.data);#}
+        {#if (config.data.labels.length === 20) {#}
+        {#    config.data.labels.shift();#}
+        {#    config.data.datasets[0].data.shift();#}
+        {#\}#}
+        {#config.data.labels.push(data.time);#}
+        {#config.data.datasets[0].data.push(data.value);#}
+        {#lineChart.update();#}
+        const data = JSON.parse(event.data);
+        gauge1.update(data.value);
+        gauge2.update(data.memory);
+        gauge3.update(data.total);
+        gauge4.update(data.disk);
+    }
+</script>
+</body>
+</html>
