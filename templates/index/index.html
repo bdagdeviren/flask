@@ -33,6 +33,7 @@
           {% include "index/layout/navbar.html" %}
           <!-- End Navbar -->
           <div class="content">
+
             <!-- <iframe class="frame" src="http://127.0.0.1:8080/"></iframe> -->
           </div>
           <footer class="footer footer-black  footer-white ">
@@ -56,11 +57,12 @@
   <script src="../../static/js/core/popper.min.js"></script>
   <script src="../../static/js/core/bootstrap.min.js"></script>
   <script src="../../static/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.js"></script>
     <script>
         $(document).ready(function () {
             $(".content").load("npm");
             $("#npm").addClass('active');
-            $('#navheader').html('NPM'.toUpperCase())
+            $('#navheader').html('npm'.toUpperCase())
 
         });
         $('a').click(function () {
@@ -71,7 +73,16 @@
             $('#navheader').html(page.toUpperCase())
             return false;
         });
+        $(document).ready(function(){
+            var socket = io.connect('http://' + document.domain + ':' + location.port + '/test');
+            var numbers_received = [];
+            var log = document.getElementById("log");
+            socket.on('newnumber', function(msg) {
+                $('#log').append(msg+"<br>");
+                $('#log').scrollTop ($('#log').scrollHeight);
+            });
 
+        });
     </script>
   <!-- Chart JS -->
   <script src="../../static/js/plugins/chartjs.min.js"></script>

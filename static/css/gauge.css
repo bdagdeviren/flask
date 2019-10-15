@@ -38,3 +38,7 @@
     width: 100%;
     height: calc(100vh - 160px);
 }
+#log{
+    overflow: auto;
+    max-height: 479px;
+}
